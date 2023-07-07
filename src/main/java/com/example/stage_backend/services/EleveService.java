@@ -28,6 +28,12 @@ public class EleveService implements IEleve {
     public void saveEleve(Eleve eleve) {
         // Logique pour ajouter un élève
         eleveRepository.save(eleve);
+
+        // Envoi de l'e-mail au nouvel élève
+        String recipientEmail = eleve.getEmail();
+        String login = eleve.getUser().getLogin();
+        String password = eleve.getUser().getPassword();
+        EmailSender.sendEmail(recipientEmail, login, password);
     }
 
     @Override

@@ -28,6 +28,16 @@ public class EleveController {
         return ResponseEntity.ok(eleves);
     }
 
+    @GetMapping("/actifs")
+    public List<Eleve> getAllEleveEtatActif() {
+        return eleveService.getAllEleveEtatActif();
+    }
+
+    @GetMapping("/passifs")
+    public List<Eleve> getAllEleveEtatPassif() {
+        return eleveService.getAllEleveEtatPassif();
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Eleve> getEleveById(@PathVariable("id") Long id) {
         Optional<Eleve> eleve = eleveService.getEleveById(id);
@@ -51,6 +61,14 @@ public class EleveController {
         eleveService.archiverEleve(id);
         return ResponseEntity.ok("Élève archivé avec succès");
     }
+
+    @PutMapping("/{id}/activer")
+    public ResponseEntity<String> activerEleve(@PathVariable("id") Long id) {
+        eleveService.activerEleve(id);
+        return ResponseEntity.ok("Élève activer avec succès");
+    }
+
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteEleve(@PathVariable("id") Long id) {

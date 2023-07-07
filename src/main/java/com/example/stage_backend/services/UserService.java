@@ -24,8 +24,13 @@ public class UserService implements IUser {
 
     @Override
     public Optional<User> getUserById(Long id){
-        return userRepository.findById(id);
-    }
+        Optional<User> user = userRepository.findById(id);
+
+        if (user.isEmpty()) {
+            throw new IllegalArgumentException("L'utilisateur avec l'ID " + id + " n'existe pas.");
+        }
+
+        return user;    }
     @Override
     public void saveUser(User user) {
         // Logique pour sauvegarder un utilisateur
@@ -54,7 +59,7 @@ public class UserService implements IUser {
         User user = userRepository.findById(userId).orElse(null);
 
         if (user != null) {
-            userRepository.delete(user);
+            userRepository.deleteById(userId);
         } else {
             throw new IllegalArgumentException("L'utilisateur avec l'ID " + userId + " n'existe pas.");
         }

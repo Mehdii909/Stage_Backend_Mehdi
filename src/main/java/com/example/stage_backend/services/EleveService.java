@@ -24,6 +24,15 @@ public class EleveService implements IEleve {
     public Optional<Eleve> getEleveById(Long id){
         return eleveRepository.findById(id);
     }
+
+    public List<Eleve> getAllEleveEtatActif() {
+        return eleveRepository.findByEtat("actif");
+    }
+
+    public List<Eleve> getAllEleveEtatPassif() {
+        return eleveRepository.findByEtat("passif");
+    }
+
     @Override
     public void saveEleve(Eleve eleve) {
         // Logique pour ajouter un élève
@@ -75,6 +84,27 @@ public class EleveService implements IEleve {
                 eleveRepository.save(eleve);
             } else {
                 throw new IllegalArgumentException("L'élève avec l'ID " + eleveId + " est déjà dans l'état passif.");
+            }
+        } else {
+            throw new IllegalArgumentException("L'élève avec l'ID " + eleveId + " n'existe pas.");
+        }
+    }
+
+    @Override
+    public void activerEleve(Long eleveId) {
+        // Logique pour archiver un élève
+        Eleve eleve = eleveRepository.findById(eleveId).orElse(null);
+
+        if (eleve != null) {
+            // Vérifier si l'élève est déjà actif
+            if (eleve.getEtat().equals("passif")) {
+                // Changer l'état de l'élève à "passif"
+                eleve.setEtat("actif");
+
+                // Enregistrer la modification dans la base de données
+                eleveRepository.save(eleve);
+            } else {
+                throw new IllegalArgumentException("L'élève avec l'ID " + eleveId + " est déjà dans l'état actif.");
             }
         } else {
             throw new IllegalArgumentException("L'élève avec l'ID " + eleveId + " n'existe pas.");

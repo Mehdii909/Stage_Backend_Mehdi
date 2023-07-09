@@ -59,6 +59,9 @@ public class EleveService implements IEleve {
             eleveExistant.setPrenomMere(eleve.getPrenomMere());
             eleveExistant.setNationalite(eleve.getNationalite());
             eleveExistant.setEmail(eleve.getEmail());
+            eleveExistant.setEtat(eleve.getEtat());
+            eleveExistant.setNumTels(eleve.getNumTels());
+            eleveExistant.setUser(eleve.getUser());
             // Mettre à jour les autres attributs selon les besoins
 
             // Enregistrer les modifications dans la base de données

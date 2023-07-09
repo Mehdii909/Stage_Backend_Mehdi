@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Getter
@@ -23,6 +24,11 @@ public class Eleve implements Serializable {
     private String nationalite;
     private String email;
     private String etat;
+
+    @ElementCollection
+    @CollectionTable(name = "eleve_numtel", joinColumns = @JoinColumn(name = "eleve_id"))
+    @Column(name = "numtel")
+    private List<String> numTels;
     // Ajoutez ici une liste pour les numéros de parents si vous souhaitez en ajouter plusieurs
 
     @OneToOne(cascade = CascadeType.ALL)

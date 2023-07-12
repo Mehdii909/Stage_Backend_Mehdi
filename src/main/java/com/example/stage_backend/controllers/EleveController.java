@@ -46,34 +46,29 @@ public class EleveController {
     }
 
     @PostMapping
-    public ResponseEntity<String> saveEleve(@RequestBody Eleve eleve) {
+    public ResponseEntity<Eleve> saveEleve(@RequestBody Eleve eleve) {
         eleveService.saveEleve(eleve);
-        return ResponseEntity.status(HttpStatus.CREATED).body("Élève enregistré avec succès");
+        return new ResponseEntity<Eleve>(eleve, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<String> updateEleve(@PathVariable("id") Long id, @RequestBody Eleve eleve) {
+    public ResponseEntity<Eleve> updateEleve(@PathVariable("id") Long id, @RequestBody Eleve eleve) {
         eleveService.updateEleve(id, eleve);
-        return ResponseEntity.ok("Élève mis à jour avec succès");
+        return new ResponseEntity<Eleve>(eleve, HttpStatus.OK);
     }
 
     @PutMapping("/{id}/archiver")
-    public ResponseEntity<String> archiverEleve(@PathVariable("id") Long id) {
+    public void archiverEleve(@PathVariable("id") Long id) {
         eleveService.archiverEleve(id);
-        return ResponseEntity.ok("Élève archivé avec succès");
     }
 
     @PutMapping("/{id}/activer")
-    public ResponseEntity<String> activerEleve(@PathVariable("id") Long id) {
+    public void activerEleve(@PathVariable("id") Long id) {
         eleveService.activerEleve(id);
-        return ResponseEntity.ok("Élève activer avec succès");
     }
 
-
-
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteEleve(@PathVariable("id") Long id) {
+    public void deleteEleve(@PathVariable("id") Long id) {
         eleveService.deleteEleve(id);
-        return ResponseEntity.ok("Élève supprimé avec succès");
     }
 }

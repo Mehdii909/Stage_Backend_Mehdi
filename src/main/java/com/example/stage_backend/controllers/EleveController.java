@@ -31,12 +31,12 @@ public class EleveController {
 
     @GetMapping("/actifs")
     public List<Eleve> getAllEleveEtatActif() {
-        return eleveService.getAllEleveEtatActif();
+        return eleveService.getAllEleveEtatActiver();
     }
 
     @GetMapping("/passifs")
     public List<Eleve> getAllEleveEtatPassif() {
-        return eleveService.getAllEleveEtatPassif();
+        return eleveService.getAllEleveEtatArchiver();
     }
 
     @GetMapping("/{id}")

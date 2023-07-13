@@ -25,12 +25,12 @@ public class EleveService implements IEleve {
         return eleveRepository.findById(id);
     }
 
-    public List<Eleve> getAllEleveEtatActif() {
-        return eleveRepository.findByEtat("actif");
+    public List<Eleve> getAllEleveEtatActiver() {
+        return eleveRepository.findByEtat("activer");
     }
 
-    public List<Eleve> getAllEleveEtatPassif() {
-        return eleveRepository.findByEtat("passif");
+    public List<Eleve> getAllEleveEtatArchiver() {
+        return eleveRepository.findByEtat("archiver");
     }
 
     @Override
@@ -79,14 +79,14 @@ public class EleveService implements IEleve {
 
         if (eleve != null) {
             // Vérifier si l'élève est déjà actif
-            if (eleve.getEtat().equals("actif")) {
+            if (eleve.getEtat().equals("activer")) {
                 // Changer l'état de l'élève à "passif"
-                eleve.setEtat("passif");
+                eleve.setEtat("archiver");
 
                 // Enregistrer la modification dans la base de données
                 eleveRepository.save(eleve);
             } else {
-                throw new IllegalArgumentException("L'élève avec l'ID " + eleveId + " est déjà dans l'état passif.");
+                throw new IllegalArgumentException("L'élève avec l'ID " + eleveId + " est déjà dans l'état archiver.");
             }
         } else {
             throw new IllegalArgumentException("L'élève avec l'ID " + eleveId + " n'existe pas.");
@@ -100,14 +100,14 @@ public class EleveService implements IEleve {
 
         if (eleve != null) {
             // Vérifier si l'élève est déjà actif
-            if (eleve.getEtat().equals("passif")) {
+            if (eleve.getEtat().equals("archiver")) {
                 // Changer l'état de l'élève à "passif"
-                eleve.setEtat("actif");
+                eleve.setEtat("activer");
 
                 // Enregistrer la modification dans la base de données
                 eleveRepository.save(eleve);
             } else {
-                throw new IllegalArgumentException("L'élève avec l'ID " + eleveId + " est déjà dans l'état actif.");
+                throw new IllegalArgumentException("L'élève avec l'ID " + eleveId + " est déjà dans l'état activer.");
             }
         } else {
             throw new IllegalArgumentException("L'élève avec l'ID " + eleveId + " n'existe pas.");

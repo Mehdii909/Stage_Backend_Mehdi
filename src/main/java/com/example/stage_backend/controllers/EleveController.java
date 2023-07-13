@@ -29,12 +29,12 @@ public class EleveController {
         return ResponseEntity.ok(eleves);
     }
 
-    @GetMapping("/actifs")
+    @GetMapping("/activer")
     public List<Eleve> getAllEleveEtatActif() {
         return eleveService.getAllEleveEtatActiver();
     }
 
-    @GetMapping("/passifs")
+    @GetMapping("/archiver")
     public List<Eleve> getAllEleveEtatPassif() {
         return eleveService.getAllEleveEtatArchiver();
     }

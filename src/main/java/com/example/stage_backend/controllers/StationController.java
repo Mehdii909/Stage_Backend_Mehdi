@@ -1,5 +1,6 @@
 package com.example.stage_backend.controllers;
 
+import com.example.stage_backend.entities.Classe;
 import com.example.stage_backend.entities.Station;
 import com.example.stage_backend.services.StationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,17 @@ public class StationController {
     public ResponseEntity<List<Station>> getAllStations() {
         List<Station> stations = stationService.getAll();
         return ResponseEntity.ok(stations);
+    }
+
+
+    @GetMapping("/activer")
+    public List<Station> getAllClasseEtatActiver() {
+        return stationService.getAllStationEtatActiver();
+    }
+
+    @GetMapping("/archiver")
+    public List<Station> getAllClasseEtatArchiver() {
+        return stationService.getAllStationEtatArchiver();
     }
 
     @GetMapping("/{id}")

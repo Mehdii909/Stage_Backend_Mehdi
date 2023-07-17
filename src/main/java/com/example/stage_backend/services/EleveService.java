@@ -2,6 +2,8 @@ package com.example.stage_backend.services;
 
 import com.example.stage_backend.dao.EleveRepository;
 import com.example.stage_backend.entities.Eleve;
+import com.example.stage_backend.dao.UserRepository;
+import com.example.stage_backend.entities.User;
 import com.example.stage_backend.interfaces.IEleve;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,9 @@ public class EleveService implements IEleve {
 
     @Autowired
     EleveRepository eleveRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Override
     public List<Eleve> getAll() {
@@ -35,6 +40,14 @@ public class EleveService implements IEleve {
 
     @Override
     public void saveEleve(Eleve eleve) {
+        User user = eleve.getUser();
+
+        // Save the User entity
+        userRepository.save(user);
+
+        // Set the saved User entity on the Eleve entity
+        eleve.setUser(user);
+
         // Logique pour ajouter un élève
         eleveRepository.save(eleve);
 

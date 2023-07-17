@@ -1,7 +1,6 @@
 package com.example.stage_backend.controllers;
 
 import com.example.stage_backend.entities.Classe;
-import com.example.stage_backend.entities.Eleve;
 import com.example.stage_backend.services.ClasseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,12 +13,12 @@ import java.util.Optional;
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(value = "/classes", produces = "application/json")
-public class ClasssesController {
+public class ClasseController {
 
     private final ClasseService classeService;
 
     @Autowired
-    public ClasssesController(ClasseService classeService) {
+    public ClasseController(ClasseService classeService) {
         this.classeService = classeService;
     }
 

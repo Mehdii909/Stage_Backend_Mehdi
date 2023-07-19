@@ -34,7 +34,6 @@ public class ClasseController {
         return classe.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
-
     @GetMapping("/activer")
     public List<Classe> getAllClasseEtatActiver() {
         return classeService.getAllClasseEtatActiver();
@@ -44,7 +43,6 @@ public class ClasseController {
     public List<Classe> getAllClasseEtatArchiver() {
         return classeService.getAllClasseEtatArchiver();
     }
-
 
     @PostMapping
     public ResponseEntity<Classe> saveClasse(@RequestBody Classe classe) {

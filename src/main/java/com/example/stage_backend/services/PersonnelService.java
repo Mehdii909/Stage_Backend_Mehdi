@@ -21,75 +21,44 @@ import java.util.Optional;
 @Service
 public class PersonnelService implements IPersonnel {
 
-
-
-
     @Autowired
     PersonnelRepository personnelRepository;
 
-
     @Autowired
     private UserRepository userRepository;
-
-
-
 
     @Override
     public List<Personnel> getAll() {
         return personnelRepository.findAll();
     }
 
-
-
-
     @Override
     public Optional <Personnel> getPersonnelById(Long id){
         return personnelRepository.findById(id);
-
-
     }
-
-
-
-
-
-
-
 
     public List<Personnel> getAllPersonnelEtatActiver() {
         return personnelRepository.findPersonnelByEtat("activer");
     }
 
-
-
-
     public List<Personnel> getAllPersonnelEtatArchiver() {
         return personnelRepository.findPersonnelByEtat("archiver");
     }
 
-
-
-
     @Override
     public void savePersonnel(Personnel personnel) {
-
-
         User user = personnel.getUser();
 
-
-// Save the User entity
+        // Save the User entity
         userRepository.save(user);
 
-
-// Set the saved User entity on the Personnel entity
+        // Set the saved User entity on the Personnel entity
         personnel.setUser(user);
-// Ajouter personnel
+
+        // Ajouter personnel
         personnelRepository.save(personnel);
 
-
-
-
-// Envoi de l'e-mail au personnel
+        // Envoi de l'e-mail au personnel
         String recipientEmail = personnel.getEmail();
         String login = personnel.getUser().getLogin();
         String password = personnel.getUser().getPassword();

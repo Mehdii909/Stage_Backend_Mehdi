@@ -6,6 +6,7 @@ import com.example.stage_backend.dao.UserRepository;
 import com.example.stage_backend.entities.User;
 import com.example.stage_backend.interfaces.IEleve;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,11 +32,11 @@ public class EleveService implements IEleve {
     }
 
     public List<Eleve> getAllEleveEtatActiver() {
-        return eleveRepository.findByEtat("activer");
+        return eleveRepository.findByEtat("activer", Sort.by(Sort.Direction.ASC, "id"));
     }
 
     public List<Eleve> getAllEleveEtatArchiver() {
-        return eleveRepository.findByEtat("archiver");
+        return eleveRepository.findByEtat("archiver", Sort.by(Sort.Direction.ASC, "id"));
     }
 
     @Override

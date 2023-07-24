@@ -4,6 +4,7 @@ import com.example.stage_backend.dao.ChauffeurRepository;
 import com.example.stage_backend.entities.Chauffeur;
 import com.example.stage_backend.interfaces.IChauffeur;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -88,11 +89,11 @@ public class ChauffeurService implements IChauffeur {
 
     @Override
     public List<Chauffeur> getAllChauffeursEtatActiver() {
-        return chauffeurRepository.findByEtat("activer");
+        return chauffeurRepository.findByEtat("activer", Sort.by(Sort.Direction.ASC, "id"));
     }
 
     @Override
     public List<Chauffeur> getAllChauffeursEtatArchiver() {
-        return chauffeurRepository.findByEtat("archiver");
+        return chauffeurRepository.findByEtat("archiver", Sort.by(Sort.Direction.ASC, "id"));
     }
 }

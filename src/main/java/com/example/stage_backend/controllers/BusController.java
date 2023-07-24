@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping(value = "/bus", produces = "application/json")
+@RequestMapping(value = "/buses", produces = "application/json")
 public class BusController {
 
     private final BusService busService;
@@ -34,12 +34,12 @@ public class BusController {
         return bus.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
-    @GetMapping("/actives")
+    @GetMapping("/activer")
     public List<Bus> getAllBusesEtatActif() {
         return busService.getAllBusEtatActiver();
     }
 
-    @GetMapping("/archives")
+    @GetMapping("/archiver")
     public List<Bus> getAllBusesEtatArchiver() {
         return busService.getAllBusEtatArchiver();
     }

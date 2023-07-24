@@ -4,6 +4,7 @@ import com.example.stage_backend.dao.BusRepository;
 import com.example.stage_backend.entities.Bus;
 import com.example.stage_backend.interfaces.IBus;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -43,6 +44,7 @@ public class BusService implements IBus {
             existingBus.setMarqueModele(bus.getMarqueModele());
             existingBus.setNombrePlaces(bus.getNombrePlaces());
             existingBus.setEtat(bus.getEtat());
+            existingBus.setAgence(bus.getAgence());
 
             busRepository.save(existingBus);
         } else {
@@ -87,11 +89,11 @@ public class BusService implements IBus {
 
     @Override
     public List<Bus> getAllBusEtatActiver() {
-        return busRepository.findByEtat("activer");
+        return busRepository.findByEtat("activer", Sort.by(Sort.Direction.ASC, "id"));
     }
 
     @Override
     public List<Bus> getAllBusEtatArchiver() {
-        return busRepository.findByEtat("archiver");
+        return busRepository.findByEtat("archiver", Sort.by(Sort.Direction.ASC, "id"));
     }
 }

@@ -4,6 +4,7 @@ import com.example.stage_backend.dao.StationRepository;
 import com.example.stage_backend.entities.Station;
 import com.example.stage_backend.interfaces.IStation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,12 +28,12 @@ public class StationService implements IStation {
 
     @Override
     public List<Station> getAllStationEtatActiver() {
-        return stationRepository.findByEtat("activer");
+        return stationRepository.findByEtat("activer", Sort.by(Sort.Direction.ASC, "id"));
     }
 
     @Override
     public List<Station> getAllStationEtatArchiver() {
-        return stationRepository.findByEtat("archiver");
+        return stationRepository.findByEtat("archiver", Sort.by(Sort.Direction.ASC, "id"));
     }
 
     @Override

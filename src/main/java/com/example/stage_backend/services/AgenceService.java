@@ -4,6 +4,7 @@ import com.example.stage_backend.dao.AgenceRepository;
 import com.example.stage_backend.entities.Agence;
 import com.example.stage_backend.interfaces.IAgence;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -89,11 +90,11 @@ public class AgenceService implements IAgence {
 
     @Override
     public List<Agence> getAllAgencesEtatActiver() {
-        return agenceRepository.findByEtat("activer");
+        return agenceRepository.findByEtat("activer", Sort.by(Sort.Direction.ASC, "id"));
     }
 
     @Override
     public List<Agence> getAllAgencesEtatArchiver() {
-        return agenceRepository.findByEtat("archiver");
+        return agenceRepository.findByEtat("archiver", Sort.by(Sort.Direction.ASC, "id"));
     }
 }

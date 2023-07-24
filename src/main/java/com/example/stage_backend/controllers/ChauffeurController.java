@@ -34,12 +34,12 @@ public class ChauffeurController {
         return chauffeur.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
-    @GetMapping("/actifs")
+    @GetMapping("/activer")
     public List<Chauffeur> getAllChauffeursEtatActif() {
         return chauffeurService.getAllChauffeursEtatActiver();
     }
 
-    @GetMapping("/archives")
+    @GetMapping("/archiver")
     public List<Chauffeur> getAllChauffeursEtatArchive() {
         return chauffeurService.getAllChauffeursEtatArchiver();
     }

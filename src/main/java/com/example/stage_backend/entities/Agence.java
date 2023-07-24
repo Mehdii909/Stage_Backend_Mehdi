@@ -21,7 +21,6 @@ public class Agence {
     private String responsable;
     private String email;
 
-
     @ElementCollection
     @CollectionTable(name = "agence_numtel", joinColumns = @JoinColumn(name = "agence_id"))
     @Column(name = "numtel")

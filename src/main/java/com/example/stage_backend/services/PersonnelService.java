@@ -7,6 +7,7 @@ import com.example.stage_backend.entities.Personnel;
 import com.example.stage_backend.entities.User;
 import com.example.stage_backend.interfaces.IPersonnel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 
@@ -38,11 +39,11 @@ public class PersonnelService implements IPersonnel {
     }
 
     public List<Personnel> getAllPersonnelEtatActiver() {
-        return personnelRepository.findPersonnelByEtat("activer");
+        return personnelRepository.findPersonnelByEtat("activer", Sort.by(Sort.Direction.ASC, "id"));
     }
 
     public List<Personnel> getAllPersonnelEtatArchiver() {
-        return personnelRepository.findPersonnelByEtat("archiver");
+        return personnelRepository.findPersonnelByEtat("archiver", Sort.by(Sort.Direction.ASC, "id"));
     }
 
     @Override

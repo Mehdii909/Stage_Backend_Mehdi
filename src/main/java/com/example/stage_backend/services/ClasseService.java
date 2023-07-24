@@ -4,6 +4,7 @@ import com.example.stage_backend.dao.ClasseRepository;
 import com.example.stage_backend.entities.Classe;
 import com.example.stage_backend.interfaces.IClasse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,12 +28,12 @@ public class ClasseService implements IClasse {
 
     @Override
     public List<Classe> getAllClasseEtatActiver() {
-        return classeRepository.findByEtat("activer");
+        return classeRepository.findByEtat("activer", Sort.by(Sort.Direction.ASC, "id"));
     }
 
     @Override
     public List<Classe> getAllClasseEtatArchiver() {
-        return classeRepository.findByEtat("archiver");
+        return classeRepository.findByEtat("archiver", Sort.by(Sort.Direction.ASC, "id"));
     }
 
     @Override

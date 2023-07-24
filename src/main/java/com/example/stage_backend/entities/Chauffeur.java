@@ -26,9 +26,5 @@ public class Chauffeur {
     private List<String> numTels;
     private String etat;
 
-    @ManyToOne
-    @JoinColumn(name = "agence_id")
-    private Agence agence;
-
 }
 

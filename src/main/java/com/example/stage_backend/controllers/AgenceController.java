@@ -34,12 +34,12 @@ public class AgenceController {
         return agence.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
-    @GetMapping("/actives")
+    @GetMapping("/activer")
     public List<Agence> getAllAgencesEtatActiver() {
         return agenceService.getAllAgencesEtatActiver();
     }
 
-    @GetMapping("/archives")
+    @GetMapping("/archiver")
     public List<Agence> getAllAgencesEtatArchiver() {
         return agenceService.getAllAgencesEtatArchiver();
     }

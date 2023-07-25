@@ -14,5 +14,5 @@ public interface IAgence {
     void updateAgence(Long id, Agence agence);
     void archiverAgence(Long agenceId);
     void activerAgence(Long agenceId);
-    void deleteAgence(Long AgenceId);
+    void deleteAgence(Long agenceId);
 }

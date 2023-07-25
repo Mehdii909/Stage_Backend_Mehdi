@@ -19,6 +19,8 @@ public class Classe {
     private String numClasse;
     private String etat;
 
-    // Constructeurs, getters et setters, méthodes supplémentaires...
+    @ManyToOne
+    @JoinColumn(name = "annee_scolaire_id")
+    private AnneeScolaire anneeScolaire;
 }
 

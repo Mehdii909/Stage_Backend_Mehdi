@@ -49,6 +49,7 @@ public class ClasseService implements IClasse {
             classeExistante.setCycle(classe.getCycle());
             classeExistante.setNiveau(classe.getNiveau());
             classeExistante.setNumClasse(classe.getNumClasse());
+            classeExistante.setAnneeScolaire(classe.getAnneeScolaire());
 
             classeRepository.save(classeExistante);
         } else {

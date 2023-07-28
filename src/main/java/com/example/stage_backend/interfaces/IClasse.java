@@ -1,5 +1,6 @@
 package com.example.stage_backend.interfaces;
 
+import com.example.stage_backend.entities.Bus;
 import com.example.stage_backend.entities.Classe;
 import com.example.stage_backend.entities.Classe;
 
@@ -15,4 +16,7 @@ public interface IClasse {
     void archiverClasse(Long classeId);
     void activerClasse(Long classeId);
     void deleteClasse(Long classeId);
+
+    List<Classe> getAllClasseEtatActiverByAnsId(Long ansId);
+
 }

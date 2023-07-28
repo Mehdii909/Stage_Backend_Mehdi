@@ -96,4 +96,9 @@ public class BusService implements IBus {
     public List<Bus> getAllBusEtatArchiver() {
         return busRepository.findByEtat("archiver", Sort.by(Sort.Direction.ASC, "id"));
     }
+
+    @Override
+    public List<Bus> getAllBusEtatActiverByAgenceId(Long agenceId) {
+        return busRepository.findByAgenceIdAndEtat(agenceId, "activer");
+    }
 }

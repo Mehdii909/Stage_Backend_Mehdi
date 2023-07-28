@@ -91,4 +91,9 @@ public class ClasseService implements IClasse {
             throw new IllegalArgumentException("La classe avec l'ID " + classeId + " n'existe pas.");
         }
     }
+
+    @Override
+    public List<Classe> getAllClasseEtatActiverByAnsId(Long anneeScolaireId) {
+        return classeRepository.findByEtatAndAnneeScolaire_Id("activer", anneeScolaireId);
+    }
 }

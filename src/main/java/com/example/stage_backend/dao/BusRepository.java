@@ -9,5 +9,7 @@ import java.util.List;
 
 public interface BusRepository extends JpaRepository<Bus, Long> {
     List<Bus> findByEtat(String etat, Sort sort);
+
+    List<Bus> findByAgenceIdAndEtat(Long agenceId, String etat);
     // Ajoutez des méthodes supplémentaires de requête personnalisées si nécessaire
 }

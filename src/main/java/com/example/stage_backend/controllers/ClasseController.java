@@ -1,5 +1,6 @@
 package com.example.stage_backend.controllers;
 
+import com.example.stage_backend.entities.Bus;
 import com.example.stage_backend.entities.Classe;
 import com.example.stage_backend.services.ClasseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,12 @@ public class ClasseController {
     @GetMapping("/activer")
     public List<Classe> getAllClasseEtatActiver() {
         return classeService.getAllClasseEtatActiver();
+    }
+
+    @GetMapping("/activer/{ansId}")
+    public ResponseEntity<List<Classe>> getAllClasseEtatActiverByAnsId(@PathVariable("ansId") Long ansId) {
+        List<Classe> classes = classeService.getAllClasseEtatActiverByAnsId(ansId);
+        return ResponseEntity.ok(classes);
     }
 
     @GetMapping("/archiver")

@@ -15,4 +15,6 @@ public interface IBus {
     void archiverBus(Long busId);
     void activerBus(Long busId);
     void deleteBus(Long busId);
+
+    List<Bus> getAllBusEtatActiverByAgenceId(Long agenceId);
 }

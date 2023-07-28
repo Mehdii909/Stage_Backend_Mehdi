@@ -34,6 +34,12 @@ public class BusController {
         return bus.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/activer/{agenceId}")
+    public ResponseEntity<List<Bus>> getAllBusEtatActiverByAgenceId(@PathVariable("agenceId") Long agenceId) {
+        List<Bus> buses = busService.getAllBusEtatActiverByAgenceId(agenceId);
+        return ResponseEntity.ok(buses);
+    }
+
     @GetMapping("/activer")
     public List<Bus> getAllBusesEtatActif() {
         return busService.getAllBusEtatActiver();

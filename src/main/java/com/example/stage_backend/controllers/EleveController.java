@@ -45,6 +45,12 @@ public class EleveController {
         return eleve.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/by-nom-prenom")
+    public ResponseEntity<List<Eleve>> getEleveByNomAndPrenom(@RequestParam("nom") String nom, @RequestParam("prenom") String prenom) {
+        List<Eleve> eleves = eleveService.getEleveByNomAndPrenom(nom, prenom);
+        return ResponseEntity.ok(eleves);
+    }
+
     @PostMapping
     public ResponseEntity<Eleve> saveEleve(@RequestBody Eleve eleve) {
         eleveService.saveEleve(eleve);
@@ -71,4 +77,6 @@ public class EleveController {
     public void deleteEleve(@PathVariable("id") Long id) {
         eleveService.deleteEleve(id);
     }
+
+
 }

@@ -9,4 +9,6 @@ import java.util.List;
 
 public interface EleveRepository extends JpaRepository<Eleve, Long> {
     List<Eleve> findByEtat(String etat, Sort sort);
+
+    List<Eleve> findByNomAndPrenom(String nom, String prenom);
 }

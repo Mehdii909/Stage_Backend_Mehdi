@@ -15,4 +15,5 @@ public interface IEleve {
     void archiverEleve(Long eleveId);
     void activerEleve(Long eleveId);
     void deleteEleve(Long eleveId);
+    List<Eleve> getEleveByNomAndPrenom(String nom, String prenom);
 }

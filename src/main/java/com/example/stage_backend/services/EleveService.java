@@ -139,4 +139,8 @@ public class EleveService implements IEleve {
             throw new IllegalArgumentException("L'élève avec l'ID " + eleveId + " n'existe pas.");
         }
     }
+
+    public List<Eleve> getEleveByNomAndPrenom(String nom, String prenom) {
+        return eleveRepository.findByNomAndPrenom(nom, prenom);
+    }
 }
